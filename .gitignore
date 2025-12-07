@@ -1,19 +1,28 @@
-# Python cache
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
-# Virtual environment
-venv/
-
-# Environment variables
+# Env files
 .env
+.env.*
 
-# Docker cache
-*.pid
+# Virtual environments
+venv/
+.env/
+.venv/
 
 # Alembic cache
-alembic/*pycache*/
+alembic/__pycache__/
 
-# IDE stuff
+# Docker
+*.pid
+
+# IDE
 .vscode/
 .idea/
+
+# __pycache__ inside app
+app/__pycache__/
+app/*/__pycache__/
