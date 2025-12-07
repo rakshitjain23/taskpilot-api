@@ -7,19 +7,19 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 
 from alembic import context
 
+from app.core.config import settings
 from app.db.base import Base
 from app.models import user, workspace, project, task, comment, activity_log, ai_request
 
-# Interpret the config file for Python logging.
 config = context.config
-
 fileConfig(config.config_file_name)
 
 target_metadata = Base.metadata
 
 
 def get_url():
-    return config.get_main_option("sqlalchemy.url")
+    # Use DATABASE_URL from .env (FastAPI settings)
+    return settings.DATABASE_URL
 
 
 async def run_migrations_online() -> None:

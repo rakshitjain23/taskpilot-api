@@ -32,15 +32,15 @@ services:
     ports:
       - "8000:8000"
 
-  worker:
-    build: .
-    working_dir: /code
-    command: celery -A app.celery_app worker --loglevel=info
-    volumes:
-      - .:/code
-    depends_on:
-      - backend
-      - redis
+  # worker:
+  #   build: .
+  #   working_dir: /code
+  #   command: celery -A app.celery_app worker --loglevel=info
+  #   volumes:
+  #     - .:/code
+  #   depends_on:
+  #     - backend
+  #     - redis
 
 volumes:
   postgres_data:

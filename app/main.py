@@ -1,17 +1,10 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from app.api.v1.routes_auth import router as auth_router
 
-app = FastAPI(title="TaskPilot API", version="1.0")
+app = FastAPI()
 
-# CORS setup
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],   # we'll limit this later
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app.include_router(auth_router)
 
-@app.get("/health")
-async def health_check():
-    return {"status": "ok", "message": "TaskPilot API is running!"}
+# @app.get("/health")
+# async def health_check():
+#     return {"status": "ok", "message": "TaskPilot API is running!"}

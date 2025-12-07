@@ -1,6 +1,6 @@
 from sqlalchemy import Integer, String, Text, ForeignKey, DateTime, Enum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from datetime import datetime, timezone
+from datetime import datetime
 import enum
 
 from app.db.base import Base
@@ -29,7 +29,7 @@ class AIRequest(Base):
 
     result_text: Mapped[str | None] = mapped_column(Text)
 
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now(timezone.utc))
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
     user = relationship("User")
     task = relationship("Task")
