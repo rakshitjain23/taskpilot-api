@@ -1,0 +1,27 @@
+fastapi[standard]
+uvicorn[standard]
+
+# Database (Async)
+sqlalchemy>=2.0
+asyncpg
+alembic
+
+# Settings
+pydantic-settings
+
+# JWT & Passwords (new recommended)
+PyJWT
+pwdlib[argon2]
+
+# Forms / file uploads
+python-multipart
+
+# Background Tasks / Cache
+redis
+celery
+
+# HTTP Client
+httpx
+
+# Optional for Alembic compatibility
+psycopg2-binary
