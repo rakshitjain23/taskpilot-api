@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlalchemy import Integer, String, DateTime, ForeignKey, Text
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
 
 class Project(Base):
@@ -10,3 +10,5 @@ class Project(Base):
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
     workspace_id: Mapped[int] = mapped_column(ForeignKey("workspaces.id"), nullable=False, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, nullable=False)
+
+    tasks = relationship("Task", back_populates="project")

@@ -9,7 +9,7 @@ from alembic import context
 
 from app.core.config import settings
 from app.db.base import Base
-from app.models import user, workspace, project, task, comment, activity_log, ai_request
+from app.models import *
 
 config = context.config
 fileConfig(config.config_file_name)
