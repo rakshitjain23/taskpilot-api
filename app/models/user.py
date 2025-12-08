@@ -12,5 +12,5 @@ class User(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
     tasks = relationship("Task", back_populates="assignee")
-    comments = relationship("Comment", back_populates="user")
+    comments = relationship("Comment", back_populates="user", cascade="all, delete")
     logs = relationship("ActivityLog", back_populates="user")

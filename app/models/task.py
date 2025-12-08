@@ -21,5 +21,5 @@ class Task(Base):
     
     project = relationship("Project", back_populates="tasks")
     assignee = relationship("User", back_populates="tasks")
-    comments = relationship("Comment", back_populates="task")
-    logs = relationship("ActivityLog", back_populates="task")
+    comments = relationship("Comment", back_populates="task", cascade="all, delete")
+    logs = relationship("ActivityLog", back_populates="task")   
