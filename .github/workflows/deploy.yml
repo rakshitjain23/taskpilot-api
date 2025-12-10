@@ -22,7 +22,7 @@ jobs:
         run: |
           az account set --subscription ae9bfa5e-d45a-442e-af29-f8e53f656070
 
-      - name: Debug: List Container Apps
+      - name: Debug list apps
         run: |
           az containerapp list --resource-group rg-taskpilot -o table
 
