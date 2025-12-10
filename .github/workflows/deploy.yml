@@ -18,6 +18,10 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Set Azure Subscription
+        run: |
+          az account set --subscription ae9bfa5e-d45a-442e-af29-f8e53f656070
+
       - name: Login to ACR
         uses: azure/docker-login@v1
         with:
