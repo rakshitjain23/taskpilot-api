@@ -13,7 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # --- LOGIN TO AZURE ---
       - name: Azure Login
         uses: azure/login@v1
         with:
@@ -23,14 +22,9 @@ jobs:
         run: |
           az account set --subscription ae9bfa5e-d45a-442e-af29-f8e53f656070
 
-      # --- DEBUG: Confirm subscription + apps ---
-      - name: Debug - Show current subscription
-        run: az account show --output table
-
-      - name: Debug - List Container Apps
+      - name: Debug: List Container Apps
         run: az containerapp list --resource-group rg-taskpilot -o table
 
-      # --- LOGIN TO ACR ---
       - name: Login to ACR
         uses: azure/docker-login@v1
         with:
@@ -38,18 +32,17 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      # --- BUILD & PUSH IMAGE ---
       - name: Build and Push Docker Image
         run: |
           docker build -t taskpilotacr.azurecr.io/taskpilot-backend:${{ github.sha }} .
           docker push taskpilotacr.azurecr.io/taskpilot-backend:${{ github.sha }}
 
-      # --- DEPLOY TO AZURE CONTAINER APP ---
       - name: Deploy to Azure Container Apps
         uses: azure/container-apps-deploy-action@v2
         with:
-          appName: taskpilot-backend
-          containerName: taskpilot-backend
+          containerAppName: taskpilot-backend
           resourceGroup: rg-taskpilot
+          containerAppEnvironment: taskpilot-env
           imageToDeploy: taskpilotacr.azurecr.io/taskpilot-backend:${{ github.sha }}
-          environment: taskpilot-env
+          targetPort: 8000
+          ingress: external
