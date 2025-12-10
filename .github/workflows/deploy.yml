@@ -43,7 +43,7 @@ jobs:
         with:
           containerAppName: taskpilot-backend
           resourceGroup: rg-taskpilot
-          containerAppEnvironment: taskpilot-env
+          environmentName: taskpilot-env
           imageToDeploy: taskpilotacr.azurecr.io/taskpilot-backend:${{ github.sha }}
           targetPort: 8000
           ingress: external
