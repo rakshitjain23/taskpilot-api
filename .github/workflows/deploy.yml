@@ -34,5 +34,7 @@ jobs:
         uses: azure/container-apps-deploy-action@v2
         with:
           appName: taskpilot-backend
+          containerName: taskpilot-backend
           resourceGroup: rg-taskpilot
           imageToDeploy: taskpilotacr.azurecr.io/taskpilot-backend:${{ github.sha }}
+          environment: taskpilot-env
