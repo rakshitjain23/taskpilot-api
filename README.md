@@ -127,7 +127,7 @@ DEEPSEEK_API_KEY=your_deepseek_api_key
 
 ## 🚀 API Documentation
 
-Once the application is running, navigate to `/docs` (Swagger UI) or `/redoc` for interactive API documentation. This provides a complete list of all available endpoints and allows you to test them directly from the browser.
+Once the application is running, navigate to `/docs` (Swagger UI) or `/redoc` for interactive API documentation. This provides a complete list of all available endpoints and allows you to test them directly from browser.
 
 ## 🤝 Contributing
 
