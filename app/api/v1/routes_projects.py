@@ -130,7 +130,7 @@ async def update_project(
     return project
 
 
-# DELETE PROJECT
+# Delete Project
 @router.delete("/{workspace_id}/projects/{project_id}", status_code=204)
 async def delete_project(
     workspace_id: int,
