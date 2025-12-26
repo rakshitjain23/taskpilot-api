@@ -160,6 +160,7 @@ REDIS_URL=redis://localhost:6379/0
 
 # --- AI Integration (DeepSeek) ---
 DEEPSEEK_API_KEY=your_deepseek_api_key_here
+//v1
 ```
 
 ## 🤝 Contributing
